@@ -26,6 +26,8 @@ html, body, #root {
 .mainContent {
   flex: 1;
   padding: 24px;
+  background-color: #444;
+  color: #9CA3AF;
 }
 
 .activitiesContainer {
