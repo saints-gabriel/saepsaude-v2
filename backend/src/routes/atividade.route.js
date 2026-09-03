@@ -1,9 +1,15 @@
-
+//j
 import { Router } from 'express';
-import carregarAtividade from "../controllers/atividade.controller.js"
+
+import {
+    carregarAtividade,
+    cadastrarAtividade
+} from "../controllers/atividade.controller.js";
 
 const atividadeRouter = Router();
 
-atividadeRouter.get('/', carregarAtividade);
+atividadeRouter.get('/atividades', carregarAtividade);
+
+atividadeRouter.post('/atividades', cadastrarAtividade);
 
 export default atividadeRouter;

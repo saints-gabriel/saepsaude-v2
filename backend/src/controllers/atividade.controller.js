@@ -1,3 +1,5 @@
+
+//Cacdastrar novas atividades e buscar atividades cadastradas
 import { Atividades } from '../models/atividade.models.js';
 
 async function carregarAtividade(req, res) {

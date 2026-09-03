@@ -1,18 +1,20 @@
 import { useState } from "react";
 import styles from "../styles/Globals.module.css";
-import activityApi from "../services/api.js";
-
-
+import { criarAtividade } from "../services/api.js";
 
 function ActivityForm({ onCreate, onCancel }) {
+
+  // Guarda os dados digitados no formulário
   const [form, setForm] = useState({
     type: "",
     distance: "",
     duration: "",
   });
 
+  // Guarda as mensagens de erro
   const [errors, setErrors] = useState({});
 
+  // Executada quando o usuário altera algum campo
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -21,12 +23,14 @@ function ActivityForm({ onCreate, onCancel }) {
       [name]: value,
     });
 
+    // Remove o erro daquele campo
     setErrors({
       ...errors,
       [name]: "",
     });
   }
 
+  // Verifica se todos os campos foram preenchidos
   function validate() {
     const newErrors = {};
 
@@ -47,38 +51,56 @@ function ActivityForm({ onCreate, onCancel }) {
     return Object.keys(newErrors).length === 0;
   }
 
-  function handleSubmit(event) {
+  // Executada quando o usuário clica em "Criar Atividade"
+  async function handleSubmit(event) {
     event.preventDefault();
 
+    // Para a função caso exista algum erro
     if (!validate()) {
       return;
     }
 
-    const newActivity = {
-      id: Date.now(),
-      type: form.type,
-      distance: Number(form.distance),
-      duration: Number(form.duration),
+    // Cria o objeto que será enviado para o backend
+    const novaAtividade = {
+      tipo_atividade: form.type,
+      distancia_percorrida: Number(form.distance),
+      duracao_atividade: Number(form.duration),
+      quantidade_calorias: Number(form.distance) * 0.05,
+      usuario_id: null,
     };
 
-    const response = activityApi(newActivity);
+    try {
 
-    onCreate(newActivity);
+      // Envia a atividade para o backend
+      const atividadeSalva = await criarAtividade(novaAtividade);
 
-    setForm({
-      type: "",
-      distance: "",
-      duration: "",
-    });
+      // Envia a atividade salva para o App.jsx
+      onCreate(atividadeSalva);
+
+      // Limpa o formulário
+      setForm({
+        type: "",
+        distance: "",
+        duration: "",
+      });
+
+    } catch (error) {
+
+      console.error("Erro ao criar atividade:", error);
+
+      alert("Não foi possível criar a atividade. Tente novamente mais tarde.");
+    }
   }
 
   return (
     <section className={styles.activityFormContainer}>
+
       <h1>Crie sua atividade</h1>
 
       <form onSubmit={handleSubmit}>
 
         <div className={styles.formGroup}>
+
           <label htmlFor="type">
             Tipo da atividade
           </label>
@@ -112,9 +134,11 @@ function ActivityForm({ onCreate, onCancel }) {
               {errors.type}
             </span>
           )}
+
         </div>
 
         <div className={styles.formGroup}>
+
           <label htmlFor="distance">
             Distância percorrida (metros)
           </label>
@@ -135,9 +159,11 @@ function ActivityForm({ onCreate, onCancel }) {
               {errors.distance}
             </span>
           )}
+
         </div>
 
         <div className={styles.formGroup}>
+
           <label htmlFor="duration">
             Duração da atividade (minutos)
           </label>
@@ -158,9 +184,11 @@ function ActivityForm({ onCreate, onCancel }) {
               {errors.duration}
             </span>
           )}
+
         </div>
 
         <div className={styles.formButtons}>
+
           <button
             type="button"
             onClick={onCancel}
@@ -175,6 +203,7 @@ function ActivityForm({ onCreate, onCancel }) {
           >
             Criar Atividade
           </button>
+
         </div>
 
       </form>

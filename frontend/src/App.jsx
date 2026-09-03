@@ -13,7 +13,10 @@ function App() {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+
   const [showActivityForm, setShowActivityForm] = useState(false);
+  const [activities, setActivities] = useState([])
+  
 
   return (
     <div className="appShell">
@@ -31,26 +34,46 @@ function App() {
 
   {showActivityForm ? (
     <ActivityForm
-      onCreate={(activity) => {
-        console.log('Atividade criada:', activity);
-        setShowActivityForm(false);
-      }}
-      onCancel={() => setShowActivityForm(false)}
+     onCreate = {(activity) =>{
+
+      //adiciona a nova atividade na lista de atividades
+      setActivities([...activities, activity]);
+      //fecha o formulario
+      setShowActivityForm(false);
+
+     }}
     />
   ) : (
     <>
       <Filter />
 
       <div className="activitiesContainer">
-        <Activity
-          name="Corrida Matinal"
-          user="João Silva"
-          distance="5 Km"
-          duration="30 min"
-          calories="250"
-          likes={120}
-          comments={5}
+        { activities.map((activity) => (
+          <Activity 
+          key={activity.id} 
+          
+          name={
+            activity.tipo_atividade =="corrida"
+            ?"corrida"
+            : activity.tipo_atividade =="caminhada"
+            ?"caminhada"
+            :"trilha"
+          
+          }
+          
+          user={user?.name || "visitante"}
+
+          distance={`${activity.distancia_percorrida}m`}
+
+          duration={`${activity.duracao_atividade}min`}
+
+          calories={`${activity.quantidade_calorias}cal`}
+
+          likes = {0}
+
+          coments={0}
           />
+        ))}
          </div>
           </>
       )}
