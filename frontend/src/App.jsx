@@ -6,7 +6,7 @@ import { Filter } from './components/Filter.jsx';
 import { Activity } from './components/Activity.jsx';
 import ActivityForm from './components/ActivityForm.jsx';
 import './App.css'
-import api from './services/api.js'
+import { buscarAtividades } from './services/api.js';
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -17,15 +17,13 @@ function App() {
 
   const [showActivityForm, setShowActivityForm] = useState(false);
   const [activities, setActivities] = useState([])
-  
-  const [atividades, setAtividades] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const carregarAtividades = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/atividade');
-        setAtividades(response.data);
+        const atividades = await buscarAtividades();
+        setActivities(atividades);
       } catch (error) {
         console.error('Erro ao carregar atividades:', error);
       } finally {
@@ -40,7 +38,7 @@ function App() {
     <div className="appShell">
       <Sidepanel
         name={user?.nome || 'Visitante'}
-        count={user ? atividades.length : '-'}
+        count={user ? activities.length : '-'}
         calories={user ? 0 : '-'}
         avatarUrl={user?.image}
         
@@ -66,7 +64,11 @@ function App() {
       <Filter />
 
       <div className="activitiesContainer">
-        { activities.map((activity) => (
+        {loading ? (
+          <p>Carregando atividades...</p>
+        ) : activities.length === 0 ? (
+          <p>Nenhuma atividade encontrada.</p>
+        ) : activities.map((activity) => (
           <Activity 
           key={activity.id} 
           
