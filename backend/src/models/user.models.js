@@ -20,7 +20,7 @@ export const User = sequelize.define('user', {
         unique: true
     },
 
-    nomeDeUsuario: {
+    nome_Usuario: {
         type: DataTypes.STRING,
         allowNull: false
     },

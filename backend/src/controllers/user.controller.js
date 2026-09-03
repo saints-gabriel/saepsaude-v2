@@ -14,9 +14,9 @@ export async function loginUser(req, res) {
             return res.status(401).json({ error: "Senha inválida" })
         }
 
-        res.status(201).json({
-            message: 'Usuário logado',
-        });
+        const { senha: _, ...usuario } = acessar.toJSON();
+
+        res.status(200).json(usuario);
 
     } catch (error) {
         res.status(500).json(error);
