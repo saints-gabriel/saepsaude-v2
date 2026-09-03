@@ -85,11 +85,13 @@ function ActivityForm({ onCreate, onCancel }) {
       });
 
     } catch (error) {
+    console.error("ERRO COMPLETO:", error);
+    console.error("Resposta do servidor:", error.response?.data);
+    console.error("Status:", error.response?.status);
+    console.error("Mensagem:", error.message);
 
-      console.error("Erro ao criar atividade:", error);
-
-      alert("Não foi possível criar a atividade. Tente novamente mais tarde.");
-    }
+    alert("Não foi possível criar a atividade. Veja o Console (F12).");
+}
   }
 
   return (

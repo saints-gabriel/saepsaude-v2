@@ -1,23 +1,19 @@
-// conexao para o backend para cadastrar novas atividades e buscar atividades cadastradas
-  import axios from 'axios';
+import axios from "axios";
 
-  const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL 
-  }); 
+export const api = axios.create({
+    baseURL: import.meta.env.VITE_API_URL
+});
 
-  api.interceptors.resquest.use((config) =>{
+export async function criarAtividade(atividade) {
+    const resposta = await api.post("/atividade", atividade);
 
-    const token = localStorage.getItem('token');
-    if(token){
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-  });
+    return resposta.data;
+}
 
-  export async function criarAtividades(atividade){
+export async function buscarAtividades() {
+    const resposta = await api.get("/atividade");
 
-    const resposta = await api.get('/atividade');
-
-    return resposta.data
+    return resposta.data;
 }
 
 export default api;
