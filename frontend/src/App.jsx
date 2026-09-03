@@ -97,33 +97,6 @@ function App() {
       )}
     </main>
   </div>
-        avatarUrl={user?.imagem}
-      />
-        <main className="mainContent">
-        <Header user={user} setUser={setUser} />
-        <Filter/>
-        <div className="activitiesContainer">
-          {loading ? (
-            <p>Carregando atividades...</p>
-          ) : atividades.length > 0 ? (
-            atividades.map((atividade) => (
-              <Activity 
-                key={atividade.id}
-                name={atividade.tipo_atividade}
-                user={atividade.user?.nome || 'Usuário'}
-                distance={`${atividade.distancia_percorrida} Km`}
-                duration={`${atividade.duracao_atividade} min`}
-                calories={atividade.quantidade_calorias}
-                likes={atividade.curtidas || 0}
-                comments={atividade.comentarios || 0}
-              />
-            ))
-          ) : (
-            <p>Nenhuma atividade encontrada.</p>
-          )}
-        </div>
-        </main>
-      </div>
   )
 }
 
