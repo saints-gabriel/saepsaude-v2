@@ -285,3 +285,87 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+
+/* Caixa principal do formulário*/
+.activityFormContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Título do formulário*/
+.activityFormContainer h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+/* Envolve o rótulo e o campo: organiza em coluna (label em cima do campo) e dá espaço entre as perguntas */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Texto descritivo (rótulo) dos campos: fonte mais grossa e com espaço para não grudar no input */
+.formGroup label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Caixas de digitação e listas suspensas: ocupam 100% da largura, com borda cinza e espaçamento interno */
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Estado de erro do campo: força a borda a ficar vermelha em caso de preenchimento incorreto ou vazio */
+.inputError {
+  border: 1px solid #ff0000 !important;
+}
+
+/* Texto de aviso de erro: cor vermelha, fonte menor, posicionado logo abaixo do campo */
+.errorMessage {
+  margin-top: 5px;
+  color: #ff0000;
+  font-size: 14px;
+}
+
+/* Área dos botões: alinha os botões à direita e cria um espaço (gap) de 10px entre eles */
+.formButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+/* Botão secundário (cancelar): fundo transparente com borda e texto escuros, visual mais discreto */
+.cancelButton {
+  padding: 12px 20px;
+  background: transparent;
+  color: #333333;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Botão de ação primária (salvar/criar): alto contraste (fundo escuro, texto branco) indicando a ação principal */
+.createActivityButton {
+  padding: 12px 20px;
+  background: #333333;
+  color: #ffffff;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  cursor: pointer;
+}
