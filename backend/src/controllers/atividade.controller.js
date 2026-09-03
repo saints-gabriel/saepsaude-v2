@@ -1,4 +1,5 @@
 import { Atividades } from '../models/atividade.models.js';
+import { User } from '../models/user.models.js';
 
 
 async function carregarAtividade(req, res) {

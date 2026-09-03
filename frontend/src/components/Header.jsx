@@ -14,9 +14,9 @@ export const Header = ({ user, setUser }) => {
 
         try {
             setError('');
-            const response = await axios.post('http://localhost:3000/usuarios/login', {
+            const response = await axios.post('http://localhost:3000/user/login', {
                 email: formData.get('email'),
-                password: formData.get('password'),
+                senha: formData.get('senha'),
             });
             localStorage.setItem('usuario', JSON.stringify(response.data));
             setUser(response.data);
@@ -60,7 +60,7 @@ export const Header = ({ user, setUser }) => {
         <header className={styles.headerBut}>
             {user ? (
                 <div className={styles.loggedUser}>
-                    <span>Olá, {user.name}</span>
+                    <span>Olá, {user.nome}</span>
                     <button className={styles.loginBut} onClick={logout}>Sair</button>
                 </div>
             ) : <button className={styles.loginBut} onClick={login}>Login</button>}
@@ -85,8 +85,8 @@ export const Header = ({ user, setUser }) => {
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label htmlFor="password">Senha</label>
-                            <input type="password" id="password" name="password" placeholder="••••••••" required />
+                            <label htmlFor="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" placeholder="••••••••" required />
                         </div>
 
                         <button type="submit" className={styles.submitBut}>
