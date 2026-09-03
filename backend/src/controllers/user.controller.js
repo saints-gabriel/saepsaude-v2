@@ -14,11 +14,44 @@ export async function loginUser(req, res) {
             return res.status(401).json({ error: "Senha inválida" })
         }
 
-        res.status(201).json({
-            message: 'Usuário logado',
-        });
+        const { senha: _, ...usuario } = acessar.toJSON();
+
+        res.status(200).json(usuario);
 
     } catch (error) {
         res.status(500).json(error);
     }
+}
+
+export async function cadastrarUser(req, res) {
+    try {
+            const { nome, email, nomeDeUsuario, imagem, senha} = req.body
+            
+            if(!senha){
+                return res.status(400).json({
+                    mensagem: "senha obrigatória."
+                })       
+            }
+
+            const criar = await User.create({
+                nome,
+                email,
+                nomeDeUsuario,
+                imagem,
+                senha
+            })
+
+            console.log("Criado essa desgrasça")
+            return res.status(201).json({
+                mensagem: "Usuário criado com sucesso", 
+                criar
+            })
+
+    } catch (erro) {
+            return res.status(400).json({
+                mensagem: "Pão de batata deu erro",
+                erro
+            })
+    }
+    
 }

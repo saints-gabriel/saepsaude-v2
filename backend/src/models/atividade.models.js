@@ -11,11 +11,11 @@ export const Atividades = sequelize.define('atividade', {
     },
 
     tipo_atividade: {
-        type: DataTypes.ENUM( "corrida", "caminhada" , "trilha" , "todos"),
+        type: DataTypes.ENUM("corrida", "caminhada", "trilha", "todos"),
         defaultValue: "todos",
         allowNull: false
     },
-    
+
     distancia_percorrida: {
         type: DataTypes.FLOAT,
         allowNull: false
@@ -33,5 +33,5 @@ export const Atividades = sequelize.define('atividade', {
 
 });
 
-Atividades.belongsTo(User, {foreignKey: 'usuario_id'})
-User.hasMany(Atividades, { foreignKey: 'usuario_id'})
+Atividades.belongsTo(User, { foreignKey: 'usuario_id' })
+User.hasMany(Atividades, { foreignKey: 'usuario_id' })
