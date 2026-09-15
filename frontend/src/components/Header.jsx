@@ -14,7 +14,7 @@ export const Header = ({ user, setUser }) => {
 
         try {
             setError('');
-            const response = await axios.post('http://localhost:3000/user/login', {
+            const response = await axios.post('https://backend-app-corrida-p6qa.onrender.com/user/login', {
                 email: formData.get('email'),
                 senha: formData.get('senha'),
             });
