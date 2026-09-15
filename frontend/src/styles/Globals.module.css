@@ -1,0 +1,371 @@
+/* font geral */
+
+* {
+  font-family: "Jetbrains Mono";
+}
+
+/* button geral */
+
+button {
+  border-radius: 5px;
+  border-width: 0;
+}
+
+/* sidepanel */
+
+.sidepanel {
+  width: 25vw;
+  min-height: 100vh;
+  background-color: #333333;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 16px 16px;
+}
+
+.avatarContainer {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.avatarContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statNumber {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: #cccccc;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #555555;
+  width: 100%;
+  margin: 0;
+}
+
+.navSection {
+  flex: 1;
+  padding: 12px 16px;
+}
+
+.activitiesButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  padding: 8px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.activitiesButton img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer {
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: #aaaaaa;
+  margin: 0;
+}
+
+/* header login */
+
+.headerBut {
+  right: 5%;
+  width: 100%;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+.loginBut {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+}
+
+.loggedUser {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* login float */
+.loginModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  background: #333333;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.2s ease-out;
+}
+
+.loginModal::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modalContent {
+    padding: 2rem;
+    position: relative;
+}
+
+.closeBut {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.inputGroup label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.inputGroup input {
+    padding: 0.65rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.submitBut {
+  height: 3em;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filterHeader {
+  display: flex;
+  background-color: #333333;
+  width: 100%;
+  height: 12vh;
+  border-radius: 5px;
+  margin: 1% 0;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.filterHeader button {
+  margin: 0.75% 2%;
+  padding: 1em;
+}
+
+/* contents area */
+
+.activityDiv {
+  background-color: #666;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 1em 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 5%;
+}
+
+.userPhoto {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-left: 2%;
+}
+
+.userPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoGrid {
+  display: flex;
+  flex-direction: row; /* Alinha na horizontal (padrão) */
+  min-width: 75%;
+  gap: 20%; /* Distância parametrizada entre os elementos */
+  align-items: center; /* Alinha verticalmente ao centro (opcional) */
+}
+
+.postInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25%;
+}
+
+.postInfo .items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Caixa principal do formulário*/
+.activityFormContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Título do formulário*/
+.activityFormContainer h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+/* Envolve o rótulo e o campo: organiza em coluna (label em cima do campo) e dá espaço entre as perguntas */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Texto descritivo (rótulo) dos campos: fonte mais grossa e com espaço para não grudar no input */
+.formGroup label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Caixas de digitação e listas suspensas: ocupam 100% da largura, com borda cinza e espaçamento interno */
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Estado de erro do campo: força a borda a ficar vermelha em caso de preenchimento incorreto ou vazio */
+.inputError {
+  border: 1px solid #ff0000 !important;
+}
+
+/* Texto de aviso de erro: cor vermelha, fonte menor, posicionado logo abaixo do campo */
+.errorMessage {
+  margin-top: 5px;
+  color: #ff0000;
+  font-size: 14px;
+}
+
+/* Área dos botões: alinha os botões à direita e cria um espaço (gap) de 10px entre eles */
+.formButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+/* Botão secundário (cancelar): fundo transparente com borda e texto escuros, visual mais discreto */
+.cancelButton {
+  padding: 12px 20px;
+  background: transparent;
+  color: #333333;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Botão de ação primária (salvar/criar): alto contraste (fundo escuro, texto branco) indicando a ação principal */
+.createActivityButton {
+  padding: 12px 20px;
+  background: #333333;
+  color: #ffffff;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  cursor: pointer;
+}
