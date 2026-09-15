@@ -5,13 +5,13 @@ export const api = axios.create({
 });
 
 export async function criarAtividade(atividade) {
-    const resposta = await api.post("/atividade", atividade);
+    const resposta = await api.post("/atividades/criar", atividade);
 
     return resposta.data;
 }
 
 export async function buscarAtividades() {
-    const resposta = await api.get("/atividade");
+    const resposta = await api.get("/atividades");
 
     return resposta.data;
 }
